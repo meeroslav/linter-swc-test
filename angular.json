@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "linter-test": "apps/linter-test",
+    "linter-test-e2e": "apps/linter-test-e2e"
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "projectType": "application",
+  "root": "apps/linter-test",
+  "sourceRoot": "apps/linter-test/src",
+  "prefix": "linter-test",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/linter-test",
+        "index": "apps/linter-test/src/index.html",
+        "main": "apps/linter-test/src/main.ts",
+        "polyfills": "apps/linter-test/src/polyfills.ts",
+        "tsConfig": "apps/linter-test/tsconfig.app.json",
+        "assets": [
+          "apps/linter-test/src/favicon.ico",
+          "apps/linter-test/src/assets"
+        ],
+        "styles": ["apps/linter-test/src/styles.css"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/linter-test/src/environments/environment.ts",
+              "with": "apps/linter-test/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "linter-test:build:production"
+        },
+        "development": {
+          "browserTarget": "linter-test:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "linter-test:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/linter-test/src/**/*.ts",
+          "apps/linter-test/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/linter-test"],
+      "options": {
+        "jestConfig": "apps/linter-test/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

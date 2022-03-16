@@ -18,8 +18,8 @@ jobs:
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         id: nx-set-shas
         uses: nrwl/nx-set-shas@v2
-        with:
-          workflow-id: 'test.yml'
+        # with:
+        #   workflow-id: 'test.yml'
 
       - name: Set affected apps for deploy
         run: |

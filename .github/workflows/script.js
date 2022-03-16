@@ -1,12 +1,10 @@
-const { execSync } = require('child_process');
 const { context } = require('@actions/github');
 
-const stripNewLineEndings = sha => sha.replace('\n', '');
-
-const HEAD_SHA = stripNewLineEndings(execSync(`git rev-parse HEAD`, { encoding: 'utf-8' }));
-process.stdout.write('#_');
-process.stdout.write(HEAD_SHA);
-process.stdout.write('_%');
-
-
+process.stdout.write('\n');
+process.stdout.write(context.eventName);
+process.stdout.write('\n');
 process.stdout.write(JSON.stringify(context, null, 2));
+process.stdout.write('\n');
+process.stdout.write(JSON.stringify(context.repo, null, 2));
+process.stdout.write('\n');
+process.stdout.write(JSON.stringify(context.repository, null, 2));

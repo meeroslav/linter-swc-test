@@ -5,6 +5,7 @@ on:
     branches:
       - main
   pull_request:
+  issue_comment:
 
 jobs:
   test:
@@ -15,16 +16,16 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Derive appropriate SHAs for base and head for `nx affected` commands
-        id: nx-set-shas
-        uses: nrwl/nx-set-shas@v2
+      # - name: Derive appropriate SHAs for base and head for `nx affected` commands
+      #   id: nx-set-shas
+      #   uses: nrwl/nx-set-shas@v2
 
-      - name: Set affected apps for deploy
-        run: |
-          echo "base ${{ steps.nx-set-shas.outputs.base }}"
-          echo "head ${{ steps.nx-set-shas.outputs.head }}"
-          echo "base env var: ${NX_BASE}"
-          echo "head env var: ${NX_HEAD}"
+      # - name: Set affected apps for deploy
+      #   run: |
+      #     echo "base ${{ steps.nx-set-shas.outputs.base }}"
+      #     echo "head ${{ steps.nx-set-shas.outputs.head }}"
+      #     echo "base env var: ${NX_BASE}"
+      #     echo "head env var: ${NX_HEAD}"
 
       - name: Use Node.js 16
         uses: actions/setup-node@v2.4.0

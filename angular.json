@@ -1,6 +1,7 @@
 {
   "version": 2,
   "projects": {
+    "calendar-data": "libs/calendar-data",
     "linter-test": "apps/linter-test",
     "linter-test-e2e": "apps/linter-test-e2e"
   }

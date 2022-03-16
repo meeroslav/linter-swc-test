@@ -1,0 +1,47 @@
+name: 'Test'
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout [main]
+        with:
+          fetch-depth: 0
+
+      - name: Derive appropriate SHAs for base and head for `nx affected` commands
+        id: nx-set-shas
+        uses: nrwl/nx-set-shas@v2
+
+      - name: Set affected apps for deploy
+        run: |
+          echo "base ${{ steps.nx-set-shas.outputs.base }}"
+          echo "head ${{ steps.nx-set-shas.outputs.head }}"
+          echo "base env var: ${NX_BASE}"
+          echo "head env var: ${NX_HEAD}"
+
+      # - name: Use Node.js 16
+      #   uses: actions/setup-node@v2.4.0
+      #   with:
+      #     node-version: '16'
+
+      # - name: Yarn cache directory path
+      #   id: yarn-cache-dir-path
+      #   run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      # - name: Cache yarn
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+      #     key: node-16-yarn-${{ hashFiles('yarn.lock') }}
+      #     restore-keys: |
+      #       node-16-yarn-
+
+      # - name: Install packages
+      #   run: yarn install --prefer-offline --frozen-lockfile --non-interactive

@@ -1,3 +1,5 @@
+// import { calendarData } from '../../../../libs/calendar-data';
+import { calendarData } from '@linter-test/calendar-data';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'linter-test';
+  title = 'linter-test' + calendarData();
 }

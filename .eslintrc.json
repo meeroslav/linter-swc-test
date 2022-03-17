@@ -13,8 +13,12 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
+                "sourceTag": "app",
+                "onlyDependOnLibsWithTags": ["app-util"]
+              },
+              {
+                "sourceTag": "e2e",
+                "onlyDependOnLibsWithTags": ["e2e-util"]
               }
             ]
           }
